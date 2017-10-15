@@ -9,18 +9,16 @@ public class Calculator
 	}	
 	else
 	{
-		if(text.contains(","))
+		
+		int number = 0;
+		if(text.contains(",") || text.contains("/n"))
 		{
-			int number = 0;
-			if(text.contains(","))
-			{
-			String numbers[] = text.split(",");	
+			String numbers[] = text.split(",|/n");	
 			for(int i = 0; i < numbers.length; i++)
 			{
 				number += toInt(numbers[i]);
 			}
 			return number;
-			}	
 		}
 		return toInt(text);
 	}
