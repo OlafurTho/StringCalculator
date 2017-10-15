@@ -7,7 +7,7 @@ public class Calculator
 		if(text.equals(""))
 		{
 			return 0;
-		}	
+		}
 		else if(text.contains("-"))
 		{
 			int counter = 0;
@@ -28,17 +28,19 @@ public class Calculator
 				}
 			throw new IllegalArgumentException("Negatives not allowed: " + sb);	
 		}
-			
-		else
-			
+		else	
 		{
+
 			int number = 0;
 			if(text.contains(",") || text.contains("/n"))
 			{
 				String numbers[] = text.split(",|/n");	
 				for(int i = 0; i < numbers.length; i++)
 				{
-					number += toInt(numbers[i]);
+					if(!(toInt(numbers[i]) > 1000))
+					{
+						number += toInt(numbers[i]);						
+					}
 				}
 					return number;
 				}
