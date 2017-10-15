@@ -1,28 +1,52 @@
 package is.ru.stringcalculator
 
 public class Calculator
-{	public static int add(String text)
+{
+	public static int add(String text)
 	{
-	if(text.equals(""))
-	{
-		return 0;
-	}	
-	else
-	{
-		
-		int number = 0;
-		if(text.contains(",") || text.contains("/n"))
+		if(text.equals(""))
 		{
-			String numbers[] = text.split(",|/n");	
-			for(int i = 0; i < numbers.length; i++)
+			return 0;
+		}	
+		else if(text.contains("-"))
+		{
+			int counter = 0;
+			StringBuilder sb = new StringBuilder();
+			for(int i = 0; i < text.length(); i++)
 			{
-				number += toInt(numbers[i]);
-			}
-			return number;
+				if(text.charAt(i) == '-')
+				{
+					if(!(counter == 0))
+					{
+						sb.append(",");
+					}
+					sb.append(text.charAt(i));
+					sb.append(text.charAt(i+1));
+					i = i+2;
+					counter++;
+					}
+				}
+			throw new IllegalArgumentException("Negatives not allowed: " + sb);	
 		}
-		return toInt(text);
+			
+		else
+			
+		{
+			int number = 0;
+			if(text.contains(",") || text.contains("/n"))
+			{
+				String numbers[] = text.split(",|/n");	
+				for(int i = 0; i < numbers.length; i++)
+				{
+					number += toInt(numbers[i]);
+				}
+					return number;
+				}
+				return toInt(text);
+		}
 	}
-	}
+	
+
 	
 	public static int toInt(String text)
 	{

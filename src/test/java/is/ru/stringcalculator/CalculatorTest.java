@@ -1,7 +1,10 @@
 package is.ru.stringcalculator
 import org.junit.Test;
-
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import junit.framework.Assert;
+public class CalculatorTest 
+{
 	@Test
 	public void testEmptyString()
 	{
@@ -31,5 +34,29 @@ import junit.framework.Assert;
 	public void testMultipleNumbersNewLine()
 	{
 		Assert.assertEquals(12, Calculator.add("4/n3,5"));
+	}
+	@Test
+	public void testNegativeNumbers()
+	{
+		try
+		{
+			Calculator.add("2,-4, 3, -5");
+		}
+		catch(IllegalArgumentException e)
+		{
+			assertThat(e.getMessage(), is("Negatives not allowed: -4,-5"));
+		}
+	}
+	@Test
+	public void testNegativeNumber()
+	{
+		try
+		{
+			Calculator.add("-1");
+		}
+		catch(IllegalArgumentException e)
+		{
+			assertThat(e.getMessage(), is("Negatives not allowed: -1"));
+		}
 	}
 }
