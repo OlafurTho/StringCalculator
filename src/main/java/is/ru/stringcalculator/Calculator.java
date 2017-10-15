@@ -11,9 +11,16 @@ public class Calculator
 	{
 		if(text.contains(","))
 		{
-			String numbers[] = text.split(",");
-			int number = toInt(numbers[0]) + toInt(numbers[1]);
+			int number = 0;
+			if(text.contains(",") || text.contains("/n"))
+			{
+			String numbers[] = text.split(",");	
+			for(int i = 0; i < numbers.length; i++)
+			{
+				number += toInt(numbers[i]);
+			}
 			return number;
+			}	
 		}
 		return toInt(text);
 	}
