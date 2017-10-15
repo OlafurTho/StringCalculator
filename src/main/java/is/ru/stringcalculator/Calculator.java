@@ -1,8 +1,7 @@
 package is.ru.stringcalculator
 
 public class Calculator
-{
-	public static int add(String text)
+{	public static int add(String text)
 	{
 	if(text.equals(""))
 	{
@@ -13,10 +12,15 @@ public class Calculator
 		if(text.contains(","))
 		{
 			String numbers[] = text.split(",");
-			int number = Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
+			int number = toInt(numbers[0]) + toInt(numbers[1]);
 			return number;
 		}
-		return Integer.parseInt(text);
+		return toInt(text);
 	}
+	}
+	
+	public static int toInt(String text)
+	{
+		return Integer.parseInt(text);
 	}
 }
