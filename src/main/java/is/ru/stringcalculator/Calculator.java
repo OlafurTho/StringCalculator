@@ -1,5 +1,6 @@
 package is.ru.stringcalculator
 
+
 public class Calculator
 {
 	public static int add(String text)
@@ -30,11 +31,32 @@ public class Calculator
 		}
 		else	
 		{
-
 			int number = 0;
-			if(text.contains(",") || text.contains("/n"))
+			if(text.startsWith("//"))
 			{
-				String numbers[] = text.split(",|/n");	
+				char delimeter = text.charAt(2);
+				StringBuilder sb = new StringBuilder();
+
+				for(int i = 0; i < text.length(); i++)
+				{
+					if(text.charAt(i) == delimeter)
+					{
+						if(text.charAt(i) == delimeter)
+						{
+							sb.append(",");
+						}
+						else 
+						{
+							sb.append(text.charAt(i));							
+						}
+					}
+				}
+				text = sb.toString();
+			}
+
+			if(text.contains(",") || text.contains("\n"))
+			{
+				String numbers[] = text.split(",|\n");	
 				for(int i = 0; i < numbers.length; i++)
 				{
 					if(!(toInt(numbers[i]) > 1000))
