@@ -12,7 +12,7 @@ public class Calculator
 		if(text.contains(","))
 		{
 			int number = 0;
-			if(text.contains(",") || text.contains("/n"))
+			if(text.contains(","))
 			{
 			String numbers[] = text.split(",");	
 			for(int i = 0; i < numbers.length; i++)
