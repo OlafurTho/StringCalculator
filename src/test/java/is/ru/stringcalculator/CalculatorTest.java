@@ -3,6 +3,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import junit.framework.Assert;
+
 public class CalculatorTest 
 {
 	@Test
@@ -58,5 +59,10 @@ public class CalculatorTest
 		{
 			assertThat(e.getMessage(), is("Negatives not allowed: -1"));
 		}
+	}
+	@Test
+	public void testOverThousand()
+	{
+		Assert.assertEquals(8, Calculator.add("1001,3,5"));
 	}
 }
